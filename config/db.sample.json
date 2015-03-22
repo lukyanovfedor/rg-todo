@@ -3,5 +3,6 @@
 	"username": "",
 	"password": "",
 	"database": "",
-	"port": 3306
+	"port": 3306,
+	"connectionLimit" : 2
 }
