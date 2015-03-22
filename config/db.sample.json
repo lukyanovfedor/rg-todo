@@ -4,5 +4,5 @@
 	"password": "",
 	"database": "",
 	"port": 3306,
-	"connectionLimit" : 2
+	"connectionLimit" : 3
 }
