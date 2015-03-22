@@ -8,6 +8,10 @@ module.exports = {
 		return whatType.isString(value) && !!value.trim().length && !/ /.test(value);
 	},
 	date: function(value) {
-		return !value.length || value === '0000-00-00 00:00:00' || !isNaN(Date.parse(str));
+		if (value === '0000-00-00 00:00:00') {
+			return true;
+		}
+
+		return !value.length || !isNaN(Date.parse(value));
 	}
 };
