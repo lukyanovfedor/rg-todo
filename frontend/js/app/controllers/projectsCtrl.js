@@ -4,6 +4,10 @@
 	function ProjectsCtrl(my, Project, Task, user) {
 		var vm = this;
 
+		var saveOrder = function(order, projectId) {
+			Task.saveOrder(order, projectId);
+		};
+
 		vm.my = (function() {
 			var out = {};
 
@@ -53,6 +57,8 @@
 				Task
 					.create(projectId, form.newTask)
 					.then(function(freshTask) {
+						var newOrder = [];
+
 						form.newTask = '';
 						form.$setPristine(true);
 						form.submitted = false;
@@ -62,6 +68,12 @@
 						}
 
 						vm.my.tasks[projectId].unshift(new Task(freshTask.id, freshTask));
+
+						vm.my.tasks[projectId].forEach(function(item) {
+							newOrder.push(item.id);
+						});
+
+						saveOrder(newOrder, projectId);
 					});
 			}
 		};
@@ -107,10 +119,10 @@
 					newOrder = [];
 
 				tasks.forEach(function(item) {
-					newOrder.push(index);
+					newOrder.push(item.id);
 				});
 
-				Task.saveOrder(newOrder, moved.projectId);
+				saveOrder(newOrder, moved.projectId);
 			}
 		};
 	}
