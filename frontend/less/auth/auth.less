@@ -1,0 +1,43 @@
+.auth {
+	padding: 25px;
+	width: 500px;
+	margin: 0 auto;
+
+	button {
+		display: block;
+		width: 100%;
+		height: 42px;
+	}
+
+	.login {
+		margin: 0 0 30px;
+	}
+
+	.or {
+		position: relative;
+		text-align: center;
+		margin: 0 0 30px;
+		font-size: 18px;
+		color: @mainDark;
+		overflow: hidden;
+
+		&:before {
+			content: '';
+			display: block;
+			height: 1px;
+			background: #e7ebea;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 50%;
+			z-index: 5;
+		}
+
+		span {
+			position: relative;
+			z-index: 10;
+			background: #fff;
+			padding: 0 10px;
+		}
+	}
+}

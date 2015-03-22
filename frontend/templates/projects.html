@@ -1,0 +1,110 @@
+<div class="projects">
+	<div class="current-user">
+		<div dropdown is-open="status.isopen">
+			<div class="avatar" dropdown-toggle>
+				<img src="{{projCtrl.user.avatar}}" alt="">
+			</div>
+
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="" ng-click="main.logout()">Logout</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="single-project"
+		ng-repeat="p in projCtrl.my.projects"
+		ng-init="editProject = false">
+
+		<div class="project-title">
+			<div class="list-icon">
+				<i class="glyphicon glyphicon-list-alt"></i>
+			</div>
+
+			<auto-edit class="project-name" type="input" model="p" field="name" editable="editProject" save="update"></auto-edit>
+
+			<div class="control">
+				<a href="" ng-click="editProject = !editProject" class="edit-project" title="Edit project">
+					<i class="glyphicon glyphicon-pencil"></i>
+				</a>
+
+				<span class="separator"></span>
+
+				<a href="" ng-click="projCtrl.delete.project(p)" class="delete-project" title="Remove project">
+					<i class="glyphicon glyphicon-trash"></i>
+				</a>
+			</div>
+		</div>
+
+		<div class="add-task">
+			<div class="plus-icon">
+				<i class="glyphicon glyphicon-plus"></i>
+			</div>
+
+			<form class="control clearfix" name="addTaskForm" ng-submit="projCtrl.create.task(addTaskForm, p.id)">
+				<input type="text" ng-class="{error: !addTaskForm.taskName.$valid && (addTaskForm.taskName.$dirty || addTaskForm.submitted)}"
+					placeholder="Start typing here to create a task..." ng-model="addTaskForm.newTask" name="taskName" required />
+
+				<a href="" ng-click="projCtrl.create.task(addTaskForm, p.id)" class="trans-opacity">Add Task</a>
+			</form>
+		</div>
+
+		<ul class="tasks list-unstyled"
+			ng-if="projCtrl.my.tasks[p.id].length"
+			ng-model="projCtrl.my.tasks[p.id]"
+			as-sortable="projCtrl.dndHandlers">
+
+			<li class="single-task"
+				ng-repeat="t in projCtrl.my.tasks[p.id]"
+				as-sortable-item
+				ng-class="{done: t.status}"
+				ng-init="editTask = false;">
+
+				<div class="dnd" as-sortable-item-handle>
+					<div class="complete">
+						<a href="" ng-click="t.statusToggler()"></a>
+					</div>
+
+					<div class="sep"></div>
+
+					<auto-edit class="task-name" type="content" model="t" field="name" editable="editTask" save="update"></auto-edit>
+
+					<div class="control">
+						<span class="deadline">
+							<i class="glyphicon glyphicon-calendar"
+								ng-click="open = !open"
+								datepicker-popup="yyyy-MM-dd"
+								ng-model="t.deadline"
+								is-open="open"
+								datepicker-options="projCtrl.deadlineOpt"
+								ng-change="t.setDeadline(t.deadline);">
+							</i>
+						</span>
+
+						<span class="sep"></span>
+
+						<a href="" ng-click="editTask = !editTask" class="edit-task">
+							<i class="glyphicon glyphicon-pencil"></i>
+						</a>
+
+						<span class="sep"></span>
+
+						<a href="" ng-click="projCtrl.delete.task(t)" class="delete-task">
+							<i class="glyphicon glyphicon-trash"></i>
+						</a>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<div ng-if="!projCtrl.my.projects.length" class="empty rounded shadowed">
+		You do not have any projects yet.<br /> Try to create
+
+		<div class="empty-icon"></div>
+	</div>
+
+	<a href="" class="add-project trans-bg-color" ng-click="projCtrl.create.project()">
+		<i class="glyphicon glyphicon-plus"></i>
+		Add TODO List
+	</a>
+</div>

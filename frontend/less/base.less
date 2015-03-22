@@ -1,0 +1,116 @@
+html {
+	background: #fff;
+}
+
+body {
+	background: #fff;
+	padding: 0 0 65px;
+}
+
+input {
+	-webkit-font-smoothing: antialiased;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.dropdown-menu {
+	outline: none!important;
+
+	* {
+		outline: none!important;
+	}
+}
+
+.logo {
+	margin: 60px 0;
+	text-align: center;
+
+	.main-title, .sub-title {
+		color: @mainDark;
+		text-transform: uppercase;
+		margin: 0;
+	}
+
+	.main-title {
+		font-size: 26px;
+		font-weight: 700;
+		margin: 0 0 5px;
+	}
+
+	.sub-title {
+		font-size: 18px;
+		font-weight: 300;
+	}
+}
+
+.notifications {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 5000;
+
+	.single {
+		position: relative;
+		padding: 10px 20px 10px;
+		width: 300px;
+
+		&.error {
+			background: #e32d2b;
+		}
+
+		&.success {
+			background: #69c51a;
+		}
+
+		.title {
+			font-size: 16px;
+			color: #fff;
+			margin: 0 0 3px;
+		}
+
+		.text {
+			font-size: 13px;
+			color: #f7f7f7;
+		}
+
+		.remove {
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			color: #fff;
+			cursor: pointer;
+			font-size: 11px;
+			opacity: 0.7;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.current-user {
+	position: fixed;
+	top: 50px;
+	right: 50%;
+	margin: 0 -550px 0 0;
+
+	.avatar {
+		width: 89px;
+		height: 89px;
+		overflow: hidden;
+		border-radius: 100%;
+		border: 2px solid #CCC;
+		cursor: pointer;
+	}
+
+	.dropdown-menu {
+		margin: 15px 0 0;
+	}
+}

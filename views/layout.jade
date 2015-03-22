@@ -1,0 +1,18 @@
+doctype html
+html(ng-app='todo' ng-controller="mainCtrl as main")
+	head
+		title= title
+		link(rel='stylesheet', href='/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/css/style.min.css')
+	body
+		block content
+
+		div(ng-if='main.notify.hasCurrent()' class='notifications')
+			div(ng-repeat='r in main.notify.getCurrent()' class='single {{r.type}}')
+				div(class='title') {{r.title}}
+				div(class='text') {{r.text}}
+				div(class='remove' ng-click='main.notify.removeCurrent()')
+					i(class='glyphicon glyphicon-remove-circle')
+
+		script(src='/js/libs.min.js')
+		script(src='/js/app.min.js')

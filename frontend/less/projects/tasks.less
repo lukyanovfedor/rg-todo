@@ -1,0 +1,140 @@
+.tasks {
+	border: 1px solid #e7ebea;
+	border-top: none;
+
+	.single-task {
+		position: relative;
+		border-bottom: 1px solid #e7ebea;
+		display: table;
+		table-layout: fixed;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		&:hover {
+			background: #fcfed5;
+
+			.control {
+				.deadline, .edit-task, .delete-task, .sep {
+					display: inline-block;
+				}
+			}
+		}
+
+		&.done {
+			.complete {
+				a {
+					&:before {
+						content: '';
+						display: block;
+						width: 4px;
+						height: 4px;
+						background: #818181;
+						.border-radius(100%);
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						margin: -2px 0 0 -2px;
+					}
+				}
+			}
+
+			&:hover {
+				background: #fff;
+			}
+
+			.task-name {
+				text-decoration: line-through;
+			}
+		}
+
+		.dnd {
+			display: table-row;
+		}
+
+		.complete {
+			display: table-cell;
+			vertical-align: top;
+			width: 38px;
+			border-right: 1px solid #e7ebea;
+
+			a {
+				position: relative;
+				display: block;
+				margin: 21px auto 0;
+				width: 14px;
+				height: 14px;
+				border: 1px solid #818181;
+				background: #f5f5f5;
+				.border-radius(2px);
+			}
+		}
+
+		.sep {
+			display: table-cell;
+			width: 6px;
+			border-right: 1px solid #e7ebea;
+		}
+
+		.task-name {
+			display: table-cell;
+			vertical-align: top;
+			border-right: 1px solid #e7ebea;
+			padding: 12px;
+			color: #999999;
+			font-size: 15px;
+			width: 511px;
+
+			&.editable {
+				cursor: text;
+
+				div {
+					background: #fff;
+				}
+			}
+
+			div {
+				padding: 5px;
+				outline: none;
+			}
+		}
+
+		.control {
+			display: table-cell;
+			vertical-align: middle;
+			width: 115px;
+			text-align: center;
+			font-size: 0;
+
+
+			.deadline, .edit-task, .delete-task {
+				display: none;
+				color: #999999;
+				font-size: 15px;
+				cursor: pointer;
+				margin: 0 10px 0 0;
+
+				&:last-child {
+					margin: 0;
+				}
+			}
+
+			.deadline {
+				.dropdown-menu {
+					top: -245px!important;
+				}
+			}
+
+			.sep {
+				position: relative;
+				top: 3px;
+				display: none;
+				margin: 0 10px 0 0;
+				height: 19px;
+				width: 1px;
+				background: #999999;
+			}
+		}
+	}
+}

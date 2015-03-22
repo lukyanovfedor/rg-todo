@@ -1,0 +1,204 @@
+.projects {
+	.empty {
+		padding: 30px 0;
+		background: #fff;
+		text-align: center;
+		line-height: 28px;
+		font-size: 16px;
+		font-weight: 500;
+		color: @mainDark;
+
+		.empty-icon {
+			width: 51px;
+			height: 51px;
+			margin: 25px auto 0;
+			background: url('/img/empty.png') no-repeat;
+			background-size: cover;
+		}
+	}
+
+	.add-project {
+		position: relative;
+		display: block;
+		margin: 50px auto 0;
+		width: 210px;
+		height: 46px;
+		.border-radius(2px);
+		border: 1px solid @darkBlue;
+		background: @mainBlue;
+		line-height: 46px;
+		text-align: center;
+		color: #fff;
+		font-size: 16px;
+		font-weight: 500;
+
+		i {
+			position: absolute;
+			left: 12px;
+			top: 10px;
+			color: #2f4870;
+			font-size: 24px;
+			.text-shadow(0px 0px 1px rgba(255, 255, 255, 0.7));
+		}
+
+		&:hover {
+			background: #2B63A5;
+		}
+	}
+
+	.single-project {
+		margin: 0 0 40px;
+
+		&:last-of-type {
+			margin: 0;
+		}
+
+		.project-title {
+			position: relative;
+			padding: 10px 0 10px 50px;
+			border: 1px solid @darkBlue;
+			background: @mainBlue;
+
+			.list-icon {
+				position: absolute;
+				left: 12px;
+				top: 15px;
+				color: #394969;
+				font-size: 23px;
+				font-weight: 500;
+			}
+
+			.project-name {
+				width: 510px;
+
+				input {
+					display: block;
+					width: 100%;
+					padding: 0 3px 0 10px;
+					background: transparent;
+					border: 2px solid transparent;
+					font-size: 22px;
+					font-weight: 500;
+					color: #fff;
+				}
+
+				&.editable {
+					input {
+						background: #fff;
+						border-color: #fff;
+						color: @mainDark;
+					}
+				}
+
+				&.error {
+					input {
+						border-color: @error;
+					}
+				}
+			}
+
+			.control {
+				display: none;
+				position: absolute;
+				top: 16px;
+				right: 20px;
+
+				.edit-project, .delete-project, .separator {
+					display: inline-block;
+					color: #98b0d2;
+					font-size: 17px;
+					font-weight: 500;
+					margin: 0 7px 0 0;
+
+					&:last-child {
+						margin: 0;
+					}
+				}
+
+				.separator {
+					position: relative;
+					top: -1px;
+					width: 1px;
+					height: 14px;
+					background: #98b0d2;
+				}
+
+				.edit-project {
+
+				}
+
+				.delete-project {
+
+				}
+			}
+
+			&:hover {
+				.control {
+					display: block;
+				}
+			}
+		}
+
+		.add-task {
+			font-size: 0;
+			text-align: center;
+			background: #F5F5F5;
+			padding: 10px 14px 10px;
+
+			.plus-icon {
+				text-align: left;
+				display: inline-block;
+				vertical-align: top;
+				width: 5%;
+				font-size: 24px;
+				color: @darkGreen;
+				margin: 0 2% 0 0;
+			}
+
+			.control {
+				display: inline-block;
+				vertical-align: top;
+				width: 93%;
+				font-size: 15px;
+
+				input {
+					display: block;
+					float: left;
+					width: 80%;
+					height: 30px;
+					border: 1px solid #707070;
+					border-right: none;
+					padding: 0 14px;
+					color: #bbbbbb;
+
+					&.error {
+						border-color: @error;
+						.box-shadow(0px 0px 5px 1px rgba(234,62,58,1));
+					}
+				}
+
+				a {
+					display: block;
+					border: 1px solid #447557;
+					float: left;
+					width: 20%;
+					height: 30px;
+					line-height: 30px;
+					color: #fff;
+					background-color: #94CBAE;
+					background-image: -webkit-gradient(linear, left top, left bottom, from(#94CBAE), to(#508767));
+					background-image: -webkit-linear-gradient(top, #94CBAE, #508767);
+					background-image: -moz-linear-gradient(top, #94CBAE, #508767);
+					background-image: -ms-linear-gradient(top, #94CBAE, #508767);
+					background-image: -o-linear-gradient(top, #94CBAE, #508767);
+					background-image: linear-gradient(to bottom, #94CBAE, #508767);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#94CBAE, endColorstr=#508767);
+					.border-radiuses(3px, 3px, 0, 0);
+
+					&:hover {
+						opacity: 0.9;
+					}
+				}
+			}
+		}
+	}
+}
