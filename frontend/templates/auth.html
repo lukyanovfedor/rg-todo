@@ -2,21 +2,23 @@
 	<form ng-submit="auth.login(loginForm)" class="login" name="loginForm" novalidate="true">
 
 		<div class="form-group"
-			ng-class="{'has-error': !loginForm.lemail.$valid && (loginForm.lemail.$dirty || loginForm.submitted)}">
+			ng-class="{'has-error': !loginForm.lemail.$valid && loginForm.submitted}">
 			<input type="email" required name="lemail" class="form-control" placeholder="Enter email" ng-model="auth.loginData.email">
 
-			<div ng-if="loginForm.submitted || loginForm.lemail.$dirty">
+			<div ng-if="loginForm.submitted && !loginForm.lemail.$valid">
 				<div ng-if="loginForm.lemail.$error.email" class="help-block">Wrong email</div>
 				<div ng-if="loginForm.lemail.$error.required" class="help-block">Enter email</div>
 			</div>
 		</div>
 
 		<div class="form-group"
-			ng-class="{'has-error': !loginForm.lpassword.$valid && (loginForm.lpassword.$dirty || loginForm.submitted)}">
-			<input type="password" required name="lpassword" class="form-control" placeholder="Password" ng-model="auth.loginData.password">
+			ng-class="{'has-error': !loginForm.lpassword.$valid && loginForm.submitted}">
+			<input type="password" required name="lpassword" class="form-control" placeholder="Password" ng-model="auth.loginData.password"
+				ng-pattern="/^[a-zA-Z0-9]*$/" ng-trim="false">
 
-			<div ng-if="loginForm.submitted || loginForm.lpassword.$dirty">
+			<div ng-if="loginForm.submitted && !loginForm.lpassword.$valid">
 				<div ng-if="loginForm.lpassword.$error.required" class="help-block">Enter password</div>
+				<div ng-if="loginForm.lpassword.$error.pattern" class="help-block">Password must be alphanumeric</div>
 			</div>
 		</div>
 
@@ -29,31 +31,34 @@
 
 	<form ng-submit="auth.register(registerForm)" class="register" name="registerForm" novalidate="true">
 		<div class="form-group"
-			ng-class="{'has-error': !registerForm.remail.$valid && (registerForm.remail.$dirty || registerForm.submitted)}">
+			ng-class="{'has-error': !registerForm.remail.$valid && registerForm.submitted}">
 			<input type="email" required name="remail" class="form-control" placeholder="Email" ng-model="auth.registerData.email">
 
-			<div ng-if="registerForm.submitted || registerForm.remail.$dirty">
+			<div ng-if="registerForm.submitted && !registerForm.remail.$valid">
 				<div ng-if="registerForm.remail.$error.email" class="help-block">Wrong email</div>
 				<div ng-if="registerForm.remail.$error.required" class="help-block">Enter email</div>
 			</div>
 		</div>
 
 		<div class="form-group"
-			ng-class="{'has-error': !registerForm.rpassword.$valid && (registerForm.rpassword.$dirty || registerForm.submitted)}">
-			<input type="password" required name="rpassword" class="form-control" placeholder="Password" ng-model="auth.registerData.password">
+			ng-class="{'has-error': !registerForm.rpassword.$valid && registerForm.submitted}">
+			<input type="password" required name="rpassword" class="form-control" placeholder="Password" ng-model="auth.registerData.password"
+				ng-pattern="/^[a-zA-Z0-9]*$/" ng-trim="false">
 
-			<div ng-if="registerForm.submitted || registerForm.rpassword.$dirty">
+			<div ng-if="registerForm.submitted && !registerForm.rpassword.$valid">
 				<div ng-if="registerForm.rpassword.$error.required" class="help-block">Enter password</div>
+				<div ng-if="registerForm.rpassword.$error.pattern" class="help-block">Password must be alphanumeric</div>
 			</div>
 		</div>
 
 		<div class="form-group"
-			ng-class="{'has-error': !registerForm.rpassword2.$valid && (registerForm.rpassword2.$dirty || registerForm.submitted)}">
+			ng-class="{'has-error': !registerForm.rpassword2.$valid && registerForm.submitted}">
 			<input type="password" required name="rpassword2" class="form-control" placeholder="Retype password"
-				ng-model="auth.registerData.rePassword">
+				ng-model="auth.registerData.rePassword" ng-pattern="/^[a-zA-Z0-9]*$/" ng-trim="false">
 
-			<div ng-if="registerForm.submitted || registerForm.rpassword2.$dirty">
+			<div ng-if="registerForm.submitted && !registerForm.rpassword2.$valid">
 				<div ng-if="registerForm.rpassword2.$error.required" class="help-block">Enter password</div>
+				<div ng-if="registerForm.rpassword2.$error.pattern" class="help-block">Password must be alphanumeric</div>
 			</div>
 		</div>
 

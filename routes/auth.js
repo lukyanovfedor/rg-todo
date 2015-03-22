@@ -33,8 +33,8 @@ router.post('/register', checkLogin, function(req, res) {
 	var regData = {}, errors;
 
 	req.checkBody('email').notEmpty().isEmail();
-	req.checkBody('password').notEmpty().password();
-	req.checkBody('rePassword').notEmpty().password();
+	req.checkBody('password').notEmpty().isAlphanumeric();
+	req.checkBody('rePassword').notEmpty().isAlphanumeric();
 
 	errors = req.validationErrors(true);
 	if (errors) {
@@ -93,7 +93,7 @@ router.post('/login', checkLogin, function(req, res) {
 	var loginData = {}, errors;
 
 	req.checkBody('email').notEmpty().isEmail();
-	req.checkBody('password').notEmpty().password();
+	req.checkBody('password').notEmpty().isAlphanumeric();
 
 	errors = req.validationErrors(true);
 	if (errors) {
