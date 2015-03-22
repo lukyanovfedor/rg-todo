@@ -1,21 +1,24 @@
 var express = require('express');
 var router = express.Router();
 var auth = require('../libs/auth');
+var User = require('../models/user');
 
 // get user
 router.get('/', function(req, res, next) {
-	var user = auth.getUser(),
-		avatar;
+	var userData = auth.getUserData(),
+		avatar,
+		user;
 
-	if (!user) {
+	if (!userData) {
 		res.send(JSON.stringify({
 			user: null
 		}));
 	} else {
-		avatar = auth.getUserGravatar(user.email);
+		user = new User(userData.id, userData);
+		avatar = user.getGravatar();
 
 		res.send(JSON.stringify({
-			user: user,
+			user: userData,
 			avatar: avatar
 		}));
 	}

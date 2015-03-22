@@ -5,7 +5,6 @@ var User = require('../models/user');
 var randomString = require('../utils/randomString');
 var serialize = require('node-serialize');
 var getError = require('../utils/getError');
-var gravatar = require('gravatar');
 var exports = {};
 
 var currentUser = null;
@@ -240,7 +239,7 @@ exports.checkLogin = function(authSession) {
 
 				userId = !result.length ? null : result[0].userId;
 
-				if (currentUser) {
+				if (currentUser || !userId) {
 					conn.releaseConnection();
 
 					return defer.resolve(userId);
@@ -285,21 +284,9 @@ exports.checkLogin = function(authSession) {
  *
  * @return {Object}  user
  */
-exports.getUser = function() {
+exports.getUserData = function() {
 	return currentUser;
 };
 
-/**
- * get user gravatar image
- *
- * @author Lukyanov Fedor <lukyanov.f.ua@gmail.com>
- *
- * @param  {String} email user email
- *
- * @return {string}       img url
- */
-exports.getUserGravatar = function(email) {
-	return gravatar.url(email, {s: '85'});
-};
 
 module.exports = exports;

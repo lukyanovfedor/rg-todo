@@ -2,6 +2,7 @@ var db = require('../libs/db');
 var q = require('q');
 var getError = require('../utils/getError');
 var whatType = require('../utils/whatType');
+var gravatar = require('gravatar');
 
 var User = function(id, opt) {
 	this.id = parseInt(id, 10) || 0;
@@ -78,6 +79,17 @@ User.create = function(data) {
 	});
 
 	return defer.promise;
+};
+
+/**
+ * get user gravatar image
+ *
+ * @author Lukyanov Fedor <lukyanov.f.ua@gmail.com>
+ *
+ * @return {String}  img url
+ */
+User.prototype.getGravatar = function() {
+	return gravatar.url(this.email, {s: '85'});
 };
 
 module.exports = User;
