@@ -7,7 +7,7 @@ var pool = new Db.Pool({
 	password: config.password,
 	database: config.database,
 	port: config.port,
-	connectionLimit : 1
+	connectionLimit : config.connectionLimit
 });
 
 module.exports = {
