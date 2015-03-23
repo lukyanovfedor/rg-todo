@@ -96,7 +96,12 @@
 		};
 
 		Task.prototype.setDeadline = function(deadline) {
-			this.deadline = moment(deadline).format('YYYY-MM-DD HH:MM:SS');
+			if (deadline) {
+				this.deadline = moment(deadline).format('YYYY-MM-DD HH:MM:SS');
+			} else {
+				this.deadline = '';
+			}
+
 			this.update();
 		};
 
