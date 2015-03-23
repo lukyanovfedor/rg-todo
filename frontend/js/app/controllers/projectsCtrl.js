@@ -106,7 +106,8 @@
 		};
 
 		vm.deadlineOpt = {
-			'show-weeks': false
+			'show-weeks': false,
+			'starting-day': 1
 		};
 
 		vm.dndHandlers = {
